@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Void Cheats</title>
+<style>
+  :root {
+    --bg: #0b0612;
+    --roxo: #b026ff;
+    --roxo-claro: #e07bff;
+    --texto: #f5eaff;
+    --vidro: rgba(16, 6, 28, .62);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg) url("banner.gif") center / cover no-repeat fixed;
+    color: var(--texto);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    display: grid;
+    place-items: end center;
+    padding: 24px 20px calc(36px + env(safe-area-inset-bottom, 0px));
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: linear-gradient(to top, rgba(11,6,18,.88) 0%, rgba(11,6,18,0) 55%);
+    pointer-events: none;
+  }
+  main {
+    position: relative;
+    width: min(100%, 420px);
+    text-align: center;
+    padding: 22px 20px;
+    border: 1px solid rgba(176, 38, 255, .55);
+    border-radius: 14px;
+    background: var(--vidro);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 40px rgba(176, 38, 255, .25);
+  }
+  p { margin: 0 0 16px; font-size: 15px; line-height: 1.45; }
+  a.abrir {
+    display: block;
+    padding: 15px 18px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--roxo), #6a1bd1);
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    box-shadow: 0 0 22px rgba(176, 38, 255, .55);
+  }
+  a.abrir:active { transform: scale(.98); }
+  a.abrir:focus-visible { outline: 3px solid var(--roxo-claro); outline-offset: 3px; }
+  #aviso { margin: 14px 0 0; font-size: 13px; color: var(--roxo-claro); min-height: 1.2em; }
+</style>
+</head>
+<body>
+<main>
+  <p>Toque no botão para abrir o jogo.</p>
+  <a class="abrir" id="abrir" href="#">Abrir Free Fire</a>
+  <p id="aviso" role="status"></p>
+</main>
+
+<script>
+  var botao = document.getElementById("abrir");
+  var aviso = document.getElementById("aviso");
+  var ua = navigator.userAgent;
+
+  botao.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (/Android/i.test(ua)) {
+      // Abre o app do Free Fire (pacote com.dts.freefireth)
+      window.location.href = "intent://#Intent;package=com.dts.freefireth;end";
+    } else if (/iPhone|iPad|iPod/i.test(ua)) {
+      aviso.textContent = "No iPhone, abra o Free Fire pela tela inicial.";
+    } else {
+      aviso.textContent = "Abra esta página no celular para abrir o jogo.";
+    }
+  });
+</script>
+</body>
+</html>
